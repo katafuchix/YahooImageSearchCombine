@@ -51,6 +51,7 @@ class ViewController: UIViewController {
         // 検索ボタン
         self.searchButton.tapPublisher
             .sink(receiveValue: { [weak self] _ in
+                self?.textField.resignFirstResponder()
                 self?.viewModel.inputs.searchTrigger.send(())
             })
             .store(in: &cancellables)
